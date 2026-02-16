@@ -192,6 +192,7 @@ async function promptSlackAllowFrom(params: {
       resolveSlackUserAllowlist({
         token,
         entries,
+        rateLimitPolicy: resolved.config.rateLimitPolicy,
       }),
   });
 }

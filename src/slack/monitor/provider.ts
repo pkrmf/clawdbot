@@ -287,6 +287,7 @@ export async function monitorSlackProvider(opts: MonitorSlackOpts = {}) {
           const resolvedUsers = await resolveSlackUserAllowlist({
             token: resolveToken,
             entries: allowEntries.map((entry) => String(entry)),
+            rateLimitPolicy: account.config.rateLimitPolicy,
           });
           const { mapping, unresolved, additions } = buildAllowlistResolutionSummary(
             resolvedUsers,
@@ -318,6 +319,7 @@ export async function monitorSlackProvider(opts: MonitorSlackOpts = {}) {
             const resolvedUsers = await resolveSlackUserAllowlist({
               token: resolveToken,
               entries: Array.from(userEntries),
+              rateLimitPolicy: account.config.rateLimitPolicy,
             });
             const { resolvedMap, mapping, unresolved } =
               buildAllowlistResolutionSummary(resolvedUsers);
